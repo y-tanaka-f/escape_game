@@ -24,6 +24,7 @@ import center_room
 import south_room
 import north_room
 import west_room
+import east_room
 
 #スタート
 print("貴方は薄暗い部屋の中央に立っている。")
@@ -114,7 +115,25 @@ while pl_hp > 0 or (north_escape1 == 1 and north_escape2 == 1 and east_escape1 =
     elif key == "we":
         key, pl_hp = west_room.west(pl_hp)   
 
+    #東の壁
+    elif key == "ea":
+        key = east_room.east()
 
+    #東_星空のキャンバス
+    elif key == "star":
+        key, pl_hp = east_room.west()
+        
+    #東_林檎のキャンバス
+    elif key == "apple":
+        key, pl_hp = east_room.west(pl_hp)
+        
+    #東_真っ白なキャンバス
+    elif key == "void":
+        key, pl_hp = east_room.west(pl_hp)
+        
+    #東_薔薇のキャンバス
+    elif key == "rose":
+        key = east_room.west()   
 
 
 
@@ -122,15 +141,6 @@ if pl_hp <= 0:
     print("体力が尽きてしまい、床に倒れた。\n\
 薄れゆく意識のなか、貴方は何かの声を聞いた気がする。\n\
 Game Over")
-
-
-#東
-#elif key == "ea":
-#    east()
-
-#西    
-#elif key == "we":
-#    west()
 
 
 
