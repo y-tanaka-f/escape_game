@@ -47,7 +47,7 @@ we:部屋の西側を見る\n""").strip()
 
     
 
-while pl_hp > 0 or (north_escape1 == 1 and north_escape2 == 1 and east_escape1 == 1 and ast_escape1 == 2):
+while pl_hp > 0 or 0 in [north_escape1, north_escape2, east_escape1, east_escape2:
     #部屋の中央
     if key == "ce":
         key = center_room.center()
@@ -121,15 +121,19 @@ while pl_hp > 0 or (north_escape1 == 1 and north_escape2 == 1 and east_escape1 =
 
     #東_星空のキャンバス
     elif key == "star":
-        key, pl_hp = east_room.west()
+        key, pl_hp = east_room.canvas_star()
         
     #東_林檎のキャンバス
     elif key == "apple":
-        key, pl_hp = east_room.west(pl_hp)
+        key, pl_hp = east_room.canvas_apple()
+
+    #東_林檎のキャンバスに触れる
+    elif key == "touch":
+        key, pl_hp,east_escape1 = east_room.canvas_apple_touch(pl_hp)
         
     #東_真っ白なキャンバス
     elif key == "void":
-        key, pl_hp = east_room.west(pl_hp)
+        key, pl_hp = east_room.canvas_void(pl_hp)
         
     #東_薔薇のキャンバス
     elif key == "rose":
