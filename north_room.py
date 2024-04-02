@@ -140,7 +140,7 @@ def medium_piglet(hp):
 #小サイズの子ぶたのぬいぐるみの確認
 def small_piglet():
     print("一番小さい子ぶたのぬいぐるみに触れた。")
-    print("よく見ると小さい子ぶたが座っている部分だけ棚が白いレンガになっている。")
+    print("よく見ると小さい子ぶたが座っている部分だけ白いレンガになっている。")
 
     r_key = choice_north.command_small_piglet()
 
