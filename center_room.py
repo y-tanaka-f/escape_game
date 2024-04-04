@@ -17,6 +17,7 @@ def center():
 
     else:
         while True:
+            print("選択肢を選んでください。")
             r_key = input("""cc:テーブルを見る
 no:部屋の北側を見る
 so:部屋の南側を見る
@@ -37,13 +38,13 @@ def center_cook(hp):
     else:
         print("テーブルの上にはいくつかの料理が乗っている。")
         print("脱出の手がかりはないようだが、料理を食べることで体力は回復できそうだ。")
-
+        print("選択肢を選んでください。")
         while True:
             #料理一覧とそれぞれのHP回復量を表示
+            print(f"現在のHP：{hp}/15")
             for i in eat_list:
                 print(f"{i}：HP回復量{eat_list[i]}")
-            print("ce:食べずに部屋の中央へ戻る")
-            eat_key = input(str("選択肢を選んでください。\n"))
+            eat_key = input("ce:食べずに部屋の中央へ戻る。\n")
 
             if eat_key in "ce":
                 r_key = eat_key
@@ -74,11 +75,12 @@ def center_cook(hp):
 so:部屋の南側を見る
 ea:部屋の東側を見る
 we:部屋の西側を見る
-eat：もう一度料理を食べる\n""")
-                        if r_key in ["no", "so", "ea", "we", "eat"]:
+cc：もう一度料理を食べる\n""")
+                        if r_key in ["no", "so", "ea", "we", "cc"]:
                             break
                         else:
                             print("正しい選択肢を入力してください")
+                            
                     break
                                     
             else:
