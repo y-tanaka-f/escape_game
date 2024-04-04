@@ -1,5 +1,6 @@
 import choice_north
 import center_room
+import game_over
 
 #部屋の北側
 def north():
@@ -30,12 +31,17 @@ def red_wolf(hp):
     print("赤い狼のぬいぐるみに触れようと手を伸ばした。")
     print("突然狼のぬいぐるみが動き出し、腕に嚙みついてきた！")
     print("慌てて振り払うとぬいぐるみは奇妙な笑い声をあげながら、何事もなかったかのように元の棚の位置に戻っていった……。")
-    hp -= 3   
+    print("ダメージにより、体力が3減ったようだ。")    
 
-    print(f"現在のHP：{hp}/15")
-    r_key = choice_north.command_red_wolf()
-
-    return(r_key,hp)
+    hp -= 3
+    
+    if hp <= 0:
+        hp = 0
+        print(f"現在のHP：{hp}/15")
+        game_over.game_over()
+    else:        
+        r_key = choice_north.command_red_wolf()
+        return(r_key,hp)
 
 
 #黒色おおかみのぬいぐるみの確認
@@ -56,7 +62,6 @@ def white_wolf():
     print("どうやら腹の部分に荒い縫い目があるようだ。")
     print("……縫い目をほどいてみようか？")
 
-
     r_key = choice_north.command_white_wolf()
 
     return(r_key)
@@ -70,7 +75,6 @@ def white_wolf_undo():
     print("文字を確認すると紙は消え、ぬいぐるみの腹もいつのまにか元に戻っていた。")
 
     north_key = 1
-
     r_key = choice_north.command_key_white_wolf()
 
     return(r_key, north_key)
@@ -116,26 +120,37 @@ def large_piglet(hp):
     print("一番大きい子ぶたのぬいぐるみに触れた。")
     print("すると、突然子ぶたのぬいぐるみから薄い刃が何本も飛ばされ、手を切ってしまった！")
     print("手を離すとぬいぐるみは先ほどと同じ状態に戻った……。")
+    print("ダメージにより、体力が1減ったようだ。")
           
-    hp -= 1   
+    hp -= 1
 
-    print(f"現在のHP：{hp}/15")
-    r_key = choice_north.command_large_piglet()
+    if hp <= 0:
+        hp = 0
+        print(f"現在のHP：{hp}/15")
+        game_over.game_over()
+    else:
+        print(f"現在のHP：{hp}/15")
+        r_key = choice_north.command_large_piglet()
+        return r_key, hp
     
-    return(r_key,hp)
 
 #中サイズの子ぶたのぬいぐるみの確認
 def medium_piglet(hp):
     print("中ぐらいの子ぶたのぬいぐるみに触れた。")
     print("直後、子ぶたのぬいぐるみは高熱となり手を火傷してしまった！")
     print("手を離すとぬいぐるみは先ほどと同じ状態に戻った……。")
+    print("ダメージにより、体力が2減ったようだ。")
 
-    hp -= 2   
+    hp -= 2
 
-    print(f"現在のHP：{hp}/15")
-    r_key = choice_north.command_medium_piglet()
-
-    return(r_key,hp)
+    if hp <= 0:
+        hp = 0
+        print(f"現在のHP：{hp}/15")
+        game_over.game_over()
+    else:   
+        print(f"現在のHP：{hp}/15")
+        r_key = choice_north.command_medium_piglet()
+        return(r_key,hp)
 
 #小サイズの子ぶたのぬいぐるみの確認
 def small_piglet():

@@ -13,7 +13,8 @@ east_escape2 = 0
 #部屋の脱出用鍵
 escape = ""
 
-import sys
+#プレイヤー死亡時のゲーム終了
+import game_over
 
 #各部分のシナリオ、および選択肢のインポート
 import choice_game
@@ -24,15 +25,6 @@ import south_room
 import north_room
 import west_room
 import east_room
-
-
-#プレイヤー死亡時のゲーム終了
-def game_over():
-    print("体力が尽きてしまい、床に倒れた。")
-    print("薄れゆく意識のなか、貴何かの声を聞いた気がする。")
-    print("ゲームオーバー")
-    sys.exit()
-
 
 #スタート
 print("薄暗い部屋の中央に立っている。")
@@ -153,7 +145,7 @@ while pl_hp > 0 and 0 in [north_escape1, north_escape2, east_escape1, east_escap
 
 #PL死亡
 if pl_hp <= 0:
-    game_over()
+    game_over.game_over()
 
 #脱出キーをすべて集めて進むシナリオ
 else:
@@ -169,7 +161,7 @@ no:現実逃避をして部屋の中を歩き回る\n""")
         if key in ["yes", "no"]:
             #PL死亡
             if key == "no":
-                game_over()
+                game_over.game_over()
             #次のシナリオへ進む
             elif key == "yes":
                 break                
@@ -223,7 +215,7 @@ hope:箱に文字を入力する\n""")
 
 #PL死亡
 if pl_hp <= 0:
-    game_over()
+    game_over.game_over()
 
 #脱出成功
 else:

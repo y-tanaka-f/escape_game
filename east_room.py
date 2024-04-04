@@ -1,4 +1,6 @@
 import choice_east
+import game_over
+
 
 #部屋の東側
 def east():
@@ -38,16 +40,21 @@ def canvas_apple_touch(hp):
     print("林檎の絵に触れた瞬間、インクがどろりと溶けて毒々しい緑色に変色した。")
     print("絵に触れた指からしびれる様な痛みが走り、数秒動けなくなる")
     print("変色した林檎の上には「て（16）」と書かれている。")
-    print("文字を確認し終えたら、いつのまにか林檎は元の美しい赤色に戻っている……。") 
-    print("選択肢を選んでください。")
+    print("文字を確認し終えたら、いつのまにか林檎は元の美しい赤色に戻っている……。")
+    print("ダメージにより、体力が2減ったようだ。")
     
     hp -= 2
     east_key = 1
 
-    print(f"現在のHP：{hp}/15")
-    r_key = choice_east.command_canvas_key_apple()
-
-    return r_key, hp, east_key
+    if hp <= 0:
+        hp = 0
+        print(f"現在のHP：{hp}/15")
+        game_over.game_over()
+    else:
+        print(f"現在のHP：{hp}/15")
+        print("選択肢を選んでください。")
+        r_key = choice_east.command_canvas_key_apple()
+        return r_key, hp, east_key
 
 
 #東_真っ白なキャンバス
@@ -56,13 +63,19 @@ def canvas_void(hp):
     print("とくに気になる点はない……と思っていたら、キャンバスの中央に一本の黒い線が現れた")
     print("しばらく黒い線を眺めていたら、突然視界が歪み倒れそうになる。")
     print("……とても体がだるい。視界が歪む前に「何か」を見た気がするが、何を見たのかは覚えていない。")
-    print("選択肢を選んでください。")
+    print("精神ダメージにより、体力が2減ったようだ。")
     
     hp -= 2
-    print(f"現在のHP：{hp}/15")
-    r_key = choice_east.command_canvas_void()
-
-    return r_key, hp
+    
+    if hp <= 0:
+        hp = 0
+        print(f"現在のHP：{hp}/15")
+        game_over.game_over()
+    else:    
+        print(f"現在のHP：{hp}/15")
+        print("選択肢を選んでください。")
+        r_key = choice_east.command_canvas_void()
+        return r_key, hp
 
 #東_薔薇のキャンバス
 def canvas_rose():
@@ -81,14 +94,19 @@ def canvas_rose_sucked(hp):
     print("気が付いたら、床に転がっていた。")
     print("何があったのかは記憶にない。")
     print("体を起こし改めて薔薇の絵を見たら、「す（5）」という文字が現れすぐに消えていった……。")
-    print("選択肢を選んでください。")
+    print("精神ダメージにより、体力が4減ったようだ。")
     
     hp -= 4 
     east_key = 1
-    print(f"現在のHP：{hp}/15")
-    r_key = choice_east.command_canvas_key_rose()
 
-    return r_key, hp, east_key
+    if hp <= 0:
+        hp = 0
+        print(f"現在のHP：{hp}/15")
+        game_over.game_over()
+    else:      
+        print(f"現在のHP：{hp}/15")
+        r_key = choice_east.command_canvas_key_rose()
+        return r_key, hp, east_key
 
 
 

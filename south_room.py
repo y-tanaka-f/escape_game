@@ -1,4 +1,6 @@
 import choice_game
+import game_over
+
 #部屋の南
 def south(hp):
     print("南側の壁を見た。")
@@ -7,11 +9,14 @@ def south(hp):
     print("壁を見たことで気分がわるくなり、体力が2減ったようだ。")
 
     hp -= 2
-    
-    print(f"現在のHP：{hp}/15")
-    print("選択肢を選んでください。")
 
-    r_key = choice_game.sentaku2()
+    if hp <= 0:
+        hp = 0
+        print(f"現在のHP：{hp}/15")
+        game_over.game_over()
+    else:    
+        print(f"現在のHP：{hp}/15")
+        print("選択肢を選んでください。")
 
-
-    return(r_key,hp)
+        r_key = choice_game.sentaku2()
+        return(r_key,hp)
