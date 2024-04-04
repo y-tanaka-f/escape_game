@@ -79,9 +79,10 @@ eat：もう一度料理を食べる\n""")
                             break
                         else:
                             print("正しい選択肢を入力してください")
+                    break
                                     
             else:
-                    print("その料理はありません")
+                print("その料理はありません")
         
         return(r_key,hp) 
         
